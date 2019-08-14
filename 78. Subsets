@@ -1,0 +1,25 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    const res = [];
+    backtracking(nums, res, [], 0);
+    return res;
+};
+
+const backtracking = (nums, res, cur, index) => {
+    res.push(cur.slice());
+    for (let i = index; i < nums.length; i++) {
+        cur.push(nums[i]);
+        backtracking(nums, res, cur, i + 1);
+        cur.pop();
+    }
+}
+
+/*
+Your input
+[1,2,3]
+Output
+[[],[1],[1,2],[1,2,3],[1,3],[2],[2,3],[3]]
+*/
